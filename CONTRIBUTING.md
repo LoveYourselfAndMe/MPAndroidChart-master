@@ -47,3 +47,13 @@ For changes of a trivial nature to comments and documentation, it is not
 always necessary to create a new ticket. In this case, it is
 appropriate to start the first line of a commit with '(doc)' instead of
 a ticket number. Even the default commit message the GitHub generates is fine with us.
+
+保留两位小数的方法:
+
+mDataSet.setValueFormatter(new IValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+                DecimalFormat df = new DecimalFormat("#.00");  //生成一个df对象，确保放大的value也是小数点后一位
+                return "" + df.format(value);  //确保返回的数值时0.0
+            }
+        });
